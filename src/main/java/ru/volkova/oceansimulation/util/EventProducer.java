@@ -84,6 +84,28 @@ public class EventProducer {
         System.out.println("Охота удалась! Акула съела форель. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
+    private void eatSalmon(Shark shark) {
+        int energy = shark.getEnergy();
+        int health = shark.getHealth();
+        int oxygen = shark.getOxygen();
+        energy = energy - 8;
+        if (energy < 0) {
+            energy = 0;
+        }
+        health = health + (int) (shark.getMouth() * 7);
+        if (health > 100) {
+            health = 100;
+        }
+        oxygen = oxygen - 6;
+        if (oxygen < 0) {
+            oxygen = 0;
+        }
+        shark.setEnergy(energy);
+        shark.setHealth(health);
+        shark.setOxygen(oxygen);
+        System.out.println("Ммммм, неплохо! Акула съела лосось. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
+    }
+
     private void eatSeal(Shark shark) {
         int energy = shark.getEnergy();
         int health = shark.getHealth();
@@ -166,5 +188,19 @@ public class EventProducer {
         System.out.println("Борьба с другой акулой за территорию. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
-    private void
+    private void photoEvent(Shark shark){
+        int energy = shark.getEnergy();
+        int oxygen = shark.getOxygen();
+        energy = energy - 10;
+        if (energy < 0) {
+            energy = 0;
+        }
+        oxygen = oxygen - 5;
+        if (oxygen < 0) {
+            oxygen = 0;
+        }
+        shark.setEnergy(energy);
+        shark.setOxygen(oxygen);
+        System.out.println("Акула приплыла к берегу и хотела фото с туристом, но все сбежали(.Текущая енергия " + shark.getEnergy() + ". Текущий уровень кислорода " + shark.getOxygen());
+    }
 }
