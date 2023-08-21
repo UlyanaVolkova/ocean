@@ -126,4 +126,20 @@ public class EventProducer {
         shark.setOxygen(oxygen);
         System.out.println("Рыбаки пытались поймать акулу. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
+
+    private void surfacedEvent(Shark shark){
+        int energy = shark.getEnergy();
+        int oxygen = shark.getOxygen();
+        energy = energy - 10;
+        if(energy<0){
+            energy=0;
+        }
+        oxygen = oxygen + 30;
+        if(oxygen > 100){
+            oxygen = 100;
+        }
+        shark.setEnergy(energy);
+        shark.setOxygen(oxygen);
+        System.out.println("Акула всплыла на поверхность вдохнуть кислород. Текущая енергия " + shark.getEnergy() + ". Текущий уровень кислорода " + shark.getOxygen());
+    }
 }
