@@ -29,6 +29,11 @@ public class EventProducer {
             }else if (randomNumber>=90 && randomNumber < 100){
                 photoEvent(shark);
             }
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException();
+            }
         }
         System.out.println("Oooo нет! Акула умерла(( Конец!");
 
