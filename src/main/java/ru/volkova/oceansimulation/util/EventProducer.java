@@ -4,7 +4,33 @@ import ru.volkova.oceansimulation.entity.Shark;
 
 public class EventProducer {
 
-    public void startSimulation() {
+    public void startSimulation(Shark shark) {
+        Math.random();
+        while (checkStatus(shark)){
+            int randomNumber = (int)(Math.random() * 100);
+            if(randomNumber>=0 && randomNumber < 10){
+                sleepEvent(shark);
+            } else if(randomNumber>=10 && randomNumber < 20){
+                swimmingEvent(shark);
+            }else if(randomNumber>=20 && randomNumber < 30){
+                eatCrab(shark);
+            }else if (randomNumber>=30 && randomNumber < 40){
+                eatTrout(shark);
+            }else if (randomNumber>=40 && randomNumber < 50){
+                eatSalmon(shark);
+            }else if (randomNumber>=50 && randomNumber < 60){
+                eatSeal(shark);
+            }else if (randomNumber>=60 && randomNumber < 70){
+                fishermanAttack(shark);
+            }else if (randomNumber>=70 && randomNumber < 80){
+                surfacedEvent(shark);
+            }else if (randomNumber>=80 && randomNumber < 90){
+                fightForTerritory(shark);
+            }else if (randomNumber>=90 && randomNumber < 100){
+                photoEvent(shark);
+            }
+        }
+        System.out.println("Oooo нет! Акула умерла(( Конец!");
 
     }
 
@@ -21,7 +47,8 @@ public class EventProducer {
         }
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Акула вздремнула! + 20 энергии, - 5 кислорода. Текущая энергия " + shark.getEnergy() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -38,7 +65,8 @@ public class EventProducer {
         }
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Акула плавала в океане, но никого не встретила( - 5 энергии и - 5 кислорода. Текущая енергия " + shark.getEnergy() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -61,7 +89,8 @@ public class EventProducer {
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("У акулы легкий перекус крабом. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -84,7 +113,8 @@ public class EventProducer {
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Охота удалась! Акула съела форель. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -107,7 +137,8 @@ public class EventProducer {
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Ммммм, неплохо! Акула съела лосось. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -130,7 +161,8 @@ public class EventProducer {
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Ого! Вот это улов! Акула съела тюленя. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -153,7 +185,8 @@ public class EventProducer {
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Рыбаки пытались поймать акулу. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -170,7 +203,8 @@ public class EventProducer {
         }
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Акула всплыла на поверхность вдохнуть кислород. Текущая енергия " + shark.getEnergy() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -193,7 +227,8 @@ public class EventProducer {
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Борьба с другой акулой за территорию. Текущая енергия " + shark.getEnergy() + ". Текущее здоровье " + shark.getHealth() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
@@ -210,11 +245,12 @@ public class EventProducer {
         }
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
-        energyChecker(shark);
+        checkEnergy(shark);
+        checkOxygen(shark);
         System.out.println("Акула приплыла к берегу и хотела фото с туристом, но все сбежали(.Текущая енергия " + shark.getEnergy() + ". Текущий уровень кислорода " + shark.getOxygen());
     }
 
-    private boolean statusChecker(Shark shark) {
+    private boolean checkStatus(Shark shark) {
         if (shark.getHealth() <= 0) {
             return false;
         } else {
@@ -222,8 +258,19 @@ public class EventProducer {
         }
     }
 
-    private void energyChecker(Shark shark){
+    private void checkEnergy(Shark shark){
         if (shark.getEnergy()<= 0){
+            int health = shark.getHealth();
+            health = health - 5;
+            if (health<0){
+                health=0;
+            }
+            shark.setHealth(health);
+        }
+    }
+
+    private void checkOxygen(Shark shark){
+        if (shark.getOxygen()<= 0){
             int health = shark.getHealth();
             health = health - 5;
             if (health<0){
