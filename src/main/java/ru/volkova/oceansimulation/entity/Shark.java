@@ -7,7 +7,6 @@ public class Shark {
     private int oxygen = 100;
     private double mouth = 3.3;
 
-
     public void setHealth(int health) {
         this.health = health;
     }
@@ -31,7 +30,6 @@ public class Shark {
     public int getOxygen() {
         return this.oxygen;
     }
-
 
     public double getMouth() {
         return this.mouth;

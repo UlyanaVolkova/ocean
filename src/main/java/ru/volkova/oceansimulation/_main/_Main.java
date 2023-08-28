@@ -5,10 +5,9 @@ import ru.volkova.oceansimulation.util.EventProducer;
 
 public class _Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Shark shark = new Shark();
         EventProducer eventProducer = new EventProducer();
         eventProducer.startSimulation(shark);
-
     }
 }

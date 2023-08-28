@@ -4,7 +4,7 @@ import ru.volkova.oceansimulation.entity.Shark;
 
 public class EventProducer {
 
-    public void startSimulation(Shark shark) {
+    public void startSimulation(Shark shark) throws InterruptedException {
         Math.random();
         while (checkStatus(shark)) {
             int randomNumber = (int) (Math.random() * 100);
@@ -29,27 +29,18 @@ public class EventProducer {
             } else if (randomNumber >= 90 && randomNumber < 100) {
                 photoEvent(shark);
             }
-            try {
                 Thread.sleep(1500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException();
-            }
         }
         System.out.println("Oooo нет! Акула умерла(( Конец!");
-
     }
 
     private void sleepEvent(Shark shark) {
         int energy = shark.getEnergy();
         int oxygen = shark.getOxygen();
         energy = energy + 20;
-        if (energy > 100) {
-            energy = 100;
-        }
+        energy = getPlusEnergy(energy);
         oxygen = oxygen - 5;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
         checkEnergy(shark);
@@ -61,13 +52,9 @@ public class EventProducer {
         int energy = shark.getEnergy();
         int oxygen = shark.getOxygen();
         energy = energy - 5;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         oxygen = oxygen - 5;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
         checkEnergy(shark);
@@ -80,17 +67,11 @@ public class EventProducer {
         int health = shark.getHealth();
         int oxygen = shark.getOxygen();
         energy = energy - 5;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         health = health + (int) (shark.getMouth() * 3);
-        if (health > 100) {
-            health = 100;
-        }
+        health = getPlusHealth(health);
         oxygen = oxygen - 5;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
@@ -104,17 +85,11 @@ public class EventProducer {
         int health = shark.getHealth();
         int oxygen = shark.getOxygen();
         energy = energy - 7;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         health = health + (int) (shark.getMouth() * 6);
-        if (health > 100) {
-            health = 100;
-        }
+        health = getPlusHealth(health);
         oxygen = oxygen - 6;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
@@ -128,17 +103,11 @@ public class EventProducer {
         int health = shark.getHealth();
         int oxygen = shark.getOxygen();
         energy = energy - 8;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         health = health + (int) (shark.getMouth() * 7);
-        if (health > 100) {
-            health = 100;
-        }
+        health = getPlusHealth(health);
         oxygen = oxygen - 6;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
@@ -152,17 +121,11 @@ public class EventProducer {
         int health = shark.getHealth();
         int oxygen = shark.getOxygen();
         energy = energy - 10;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         health = health + (int) (shark.getMouth() * 10);
-        if (health > 100) {
-            health = 100;
-        }
+        health = getPlusHealth(health);
         oxygen = oxygen - 7;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
@@ -176,17 +139,11 @@ public class EventProducer {
         int health = shark.getHealth();
         int oxygen = shark.getOxygen();
         energy = energy - 15;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         health = health - 20;
-        if (health < 0) {
-            health = 0;
-        }
+        health = getMinusHealth(health);
         oxygen = oxygen - 10;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
@@ -199,13 +156,9 @@ public class EventProducer {
         int energy = shark.getEnergy();
         int oxygen = shark.getOxygen();
         energy = energy - 10;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         oxygen = oxygen + 30;
-        if (oxygen > 100) {
-            oxygen = 100;
-        }
+        oxygen = getPlusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
         checkEnergy(shark);
@@ -218,17 +171,11 @@ public class EventProducer {
         int health = shark.getHealth();
         int oxygen = shark.getOxygen();
         energy = energy - 10;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         health = health - 12;
-        if (health < 0) {
-            health = 0;
-        }
+        health = getMinusHealth(health);
         oxygen = oxygen - 7;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setHealth(health);
         shark.setOxygen(oxygen);
@@ -241,13 +188,9 @@ public class EventProducer {
         int energy = shark.getEnergy();
         int oxygen = shark.getOxygen();
         energy = energy - 10;
-        if (energy < 0) {
-            energy = 0;
-        }
+        energy = getMinusEnergy(energy);
         oxygen = oxygen - 5;
-        if (oxygen < 0) {
-            oxygen = 0;
-        }
+        oxygen = getMinusOxygen(oxygen);
         shark.setEnergy(energy);
         shark.setOxygen(oxygen);
         checkEnergy(shark);
@@ -267,9 +210,7 @@ public class EventProducer {
         if (shark.getEnergy() <= 0) {
             int health = shark.getHealth();
             health = health - 5;
-            if (health < 0) {
-                health = 0;
-            }
+            health = getMinusHealth(health);
             shark.setHealth(health);
         }
     }
@@ -278,10 +219,50 @@ public class EventProducer {
         if (shark.getOxygen() <= 0) {
             int health = shark.getHealth();
             health = health - 5;
-            if (health < 0) {
-                health = 0;
-            }
+            health = getMinusHealth(health);
             shark.setHealth(health);
         }
+    }
+
+    private static int getPlusEnergy(int energy) {
+        if (energy > 100) {
+            energy = 100;
+        }
+        return energy;
+    }
+
+    private static int getMinusOxygen(int oxygen) {
+        if (oxygen < 0) {
+            oxygen = 0;
+        }
+        return oxygen;
+    }
+
+    private static int getMinusEnergy(int energy) {
+        if (energy < 0) {
+            energy = 0;
+        }
+        return energy;
+    }
+
+    private static int getPlusHealth(int health) {
+        if (health > 100) {
+            health = 100;
+        }
+        return health;
+    }
+
+    private static int getMinusHealth(int health) {
+        if (health < 0) {
+            health = 0;
+        }
+        return health;
+    }
+
+    private static int getPlusOxygen(int oxygen) {
+        if (oxygen > 100) {
+            oxygen = 100;
+        }
+        return oxygen;
     }
 }
