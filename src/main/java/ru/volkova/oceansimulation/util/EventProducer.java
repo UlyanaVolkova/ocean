@@ -5,7 +5,6 @@ import ru.volkova.oceansimulation.entity.Shark;
 public class EventProducer {
 
     public void startSimulation(Shark shark) throws InterruptedException {
-        Math.random();
         while (checkStatus(shark)) {
             int randomNumber = (int) (Math.random() * 100);
             if (randomNumber >= 0 && randomNumber < 10) {
